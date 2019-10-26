@@ -7,3 +7,7 @@ feature 分支 --功能分支  开发某个功能创建的分支 开发完成后 并回develop
 release  分支 -- 版本发布  基于develop分支创建的  发布完成之后 合并到 master 和develop 分支
 
 hotfix 分支  --维护分支     发现bug后 基于master分支创建一个补丁分支 ，修复完成后 合并到develop 和master 然后进入下一个 release
+
+git切换分支命令 git checkout -b 分支名  （git branch -a  /查看所有分支 ）
+
+在功能分支10.26 上 开发新功能完毕
