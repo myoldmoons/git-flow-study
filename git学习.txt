@@ -1,0 +1,9 @@
+master 分支 --主分支 ，不能直接修改分支代码，从其他分支合并代码 从此分支发布到 生产环境或正式环境
+
+develop 分支--主开发分支  合并与其他功能分支feature  
+
+feature 分支 --功能分支  开发某个功能创建的分支 开发完成后 并回develop 
+
+release  分支 -- 版本发布  基于develop分支创建的  发布完成之后 合并到 master 和develop 分支
+
+hotfix 分支  --维护分支     发现bug后 基于master分支创建一个补丁分支 ，修复完成后 合并到develop 和master 然后进入下一个 release
