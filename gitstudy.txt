@@ -13,5 +13,3 @@ git切换分支命令 git checkout -b 分支名  （git branch -a  /查看所有分支 ）
 在功能分支10.26 上 开发新功能完毕
 
 git diff  -- 查看差异
-
-1011
