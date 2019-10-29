@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Git 常用命令</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: url('https://git-scm.com/images/bg/body.jpg') 0 0;
+        }
+
+        .container {
+            height: auto;
+            width: 900px;
+            margin: 20px auto 80px;
+        }
+
+        .container div {
+            line-height: 50px;
+        }
+
+        .container .root {
+            margin-bottom: 10px;
+        }
+
+        .container .title {
+            height: 50px;
+            padding-left: 10px;
+            color: #f14e32;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .container .con {
+            height: 50px;
+            display: flex;
+        }
+
+        .container .con .right {
+            flex: 1.35;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .container .con .left {
+            flex: 1.15;
+            border-bottom: 1px solid #e5e5e5;
+            padding-left: 40px;
+            color: #0388a6;
+            font-size: 20px;
+            font-family: Georgia, "Times New Roman", serif !important
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class='root' v-for='(item,index) in list' :key='index'>
+                <div class="title">{{item.title}}</div>
+                <div class="con" v-for="(items,index) in item.line" :key='index'>
+                    <div class="left">{{items.name}}</div>
+                    <div class="right">{{items.remark}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                list: [{
+                        title: 'Git 基础命令',
+                        line: [{
+                                name: 'git add [file-name]',
+                                remark: '添加文件到暂存区'
+                            },
+                            {
+                                name: 'git status',
+                                remark: '检查当前文件状态'
+                            },
+                            {
+                                name: 'git diff',
+                                remark: '比较当前文件和暂存区域快照之间的差异'
+                            },
+                            {
+                                name: 'git diff  --cached',
+                                remark: '比较暂存区与上次commit的差异'
+                            },
+                            {
+                                name: 'git commit -a -m “remark”',
+                                remark: '所有已跟踪过的文件暂存起来一并提交跳过git add'
+                            },
+                            {
+                                name: 'git rm test.html',
+                                remark: '从暂存区文件清单中移除此文件'
+                            },
+                            {
+                                name: 'git mv  file_from  file_to',
+                                remark: '更改文件名'
+                            },
+                            {
+                                name: 'git log -p -2',
+                                remark: '最近两次提交 内容差异'
+                            },
+                            {
+                                name: 'git log --stat',
+                                remark: '统计行数改动'
+                            },
+                            {
+                                name: 'gitk',
+                                remark: 'log的可视化版本'
+                            }
+                        ]
+                    },
+                    {
+                        title: '撤销操作',
+                        line: [{
+                                name: 'git reset --hard 1094a',
+                                remark: '版本回退到commitID1094a'
+                            },
+                            {
+                                name: 'git reset HEAD test.html',
+                                remark: '取消暂存'
+                            },
+                            {
+                                name: 'git checkout -- test.html',
+                                remark: '恢复文件到修改之前的版本'
+                            }
+                        ]
+                    },
+                    {
+                        title: '对远程仓库操作',
+                        line: [{
+                                name: 'git remote -v',
+                                remark: '查看远程仓库'
+                            },
+                            {
+                                name: 'git remote add [name] [url]',
+                                remark: '添加远程仓库'
+                            },
+                            {
+                                name: 'git remote origin origin2',
+                                remark: '修改远程仓库在本地的简称'
+                            },
+                            {
+                                name: 'git remote rm [remote-name]',
+                                remark: '移除远程仓库'
+                            },
+                            {
+                                name: 'git fetch',
+                                remark: '从远程仓库拉取代码'
+                            },
+                            {
+                                name: 'git push [remote-name] [branch-name]',
+                                remark: '推送数据'
+                            },
+                            {
+                                name: 'git remote show [remote-name]',
+                                remark: '查看远程仓库信息'
+                            }
+                        ]
+                    },
+                    {
+                        title: '打标签 Tag',
+                        line: [{
+                                name: 'git tag',
+                                remark: '查看所有标签'
+                            },
+                            {
+                                name: 'git tag -a  v1.0  -m',
+                                remark: '"描述" 打标签'
+                            },
+                            {
+                                name: 'git show  v1.0',
+                                remark: '显示此标签详细信息'
+                            },
+                            {
+                                name: 'Git push origin v1.0',
+                                remark: '推送标签到远程'
+                            },
+                            {
+                                name: 'Git push origin - -tags',
+                                remark: '推送所有标签到远程'
+                            }
+                        ]
+                    },
+                    {
+                        title: '分支相关命令',
+                        line: [{
+                                name: 'git checkout -b [branch-name]',
+                                remark: '创建一个分支并切换到该分支'
+                            },
+                            {
+                                name: 'git branch [branch-name]',
+                                remark: '创建分支'
+                            },
+                            {
+                                name: 'git checkout [branch-name]',
+                                remark: '切换分支'
+                            },
+                            {
+                                name: 'git merge [branch-name]',
+                                remark: '合并进来的分支'
+                            },
+                            {
+                                name: 'git branch -d [branch-name]',
+                                remark: '删除分支'
+                            },
+                            {
+                                name: 'git branch --merged',
+                                remark: '查看哪些分支已被并入当前分支'
+                            },
+                            {
+                                name: 'git branch [远程名]  [本地分支名]:[分支名]',
+                                remark: '删除远程分支'
+                            },
+                            {
+                                name: 'git branch -m [old-name] [new-name]',
+                                remark: '重命名本地分支'
+                            },
+                            {
+                                name: 'git fetch [origin] [branch]',
+                                remark: '从远程获取资源到本地'
+                            },
+                            {
+                                name: 'git log -p FETCH_HEAD',
+                                remark: '查看fetch 到的更新内容'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Git 高级命令',
+                        line: [{
+                            name: 'git blame -L 10,20 test.html',
+                            remark: '追踪代码具体到每一行'
+                        }]
+                    }
+                ]
+            },
+
+        })
+    </script>
+</body>
+
+</html>
